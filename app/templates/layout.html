@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>
+                {%block title%}
+                {%endblock title%}
+        </title>
+        <!-- CSS + BOOTSTRAP + JS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
+        <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.js"></script>
+        <script src="{{ url_for('static', filename='js/countrypicker.js') }}"></script>
+
+        <!-- FONTAWESOME + GOOGLEFONTS -->
+        <script src="https://kit.fontawesome.com/859e53b4d5.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600&display=swap" rel="stylesheet">
+
+        
+    </head>
+<body>
+          <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom shadow-md fixed-top">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <h1 class="brand_name">
+                  <a class="navbar-brand" href="{{ url_for('home.homepage') }}"><img id="logo" src="{{url_for('static', filename='img/my-tie-logo-navbar-2.png')}}" alt="Home"></a>
+              </h1>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+              
+                  <ul class="navbar-nav mr-auto mt-2">
+                      <li class="nav-item active"></li>     
+                  </ul>
+
+                  <ul class="navbar-nav ml-auto mr-5 mt-2 mt-lg-0">
+                      {% if current_user.is_authenticated %}
+                      {% if current_user.is_admin %}  
+                            <li class="nav-item ml-3">
+                              <a class="nav-link active" href="{{ url_for('home.admin_dashboard') }}">Dashboard</a>
+                            </li>
+                            <li class="nav-item ml-3">
+                              <a class="nav-link" href="{{ url_for('admin.list_categories') }}">Categories</a>
+                            </li>
+                            <li class="nav-item ml-3">
+                              <a class="nav-link" href="{{ url_for('admin.list_products') }}">Products</a>
+                            </li>
+                            <li class="nav-item ml-3">
+                              <a class="nav-link" href="{{ url_for('admin.list_orders') }}">Orders</a>
+                            </li>
+                            <li class="nav-item ml-3">
+                              <a class="nav-link" href="{{ url_for('users.cart') }}"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">{{ count }}</span></a>
+                            </li>
+                      {% else %}
+                            <li class="nav-item ml-3">
+                              <a class="nav-link" href="{{ url_for('users.cart') }}"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">{{ count }}</span></a>
+                            </li>
+                      {% endif %}
+                            <li class="nav-item dropdown ml-3">
+                              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                                Hey, {{ current_user.firstname }}!</a>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ url_for('users.profile') }}">Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a>
+                              </div>
+                            </li>
+                      {% else %}  
+                              <li class="nav-item active ml-3">
+                                <a class="nav-link" href="{{ url_for('home.homepage') }}">Home <span class="sr-only">(current)</span></a>
+                              </li>
+                              <li class="nav-item ml-3">
+                                <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                              </li>
+                              <li class="nav-item ml-3">
+                                <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                              </li>
+                              <li class="nav-item ml-3">
+                                  <a class="nav-link" href="{{ url_for('users.cart') }}"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">{{ count }}</span></a>
+                              </li>
+                      {% endif %}
+                  </ul>
+              </div>
+          </nav>
+                
+                <!-- <div class="col-lg-12">
+                    <div class="content-section">
+                        <h1>some carousel slider with ads... or not</h1>    
+                    </div>
+                </div> -->
+
+                {% block head %}
+                {% endblock %}
+
+                {% block poo %}
+                {% endblock %}
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+        {% block body %}
+        {% endblock %}
+    </div>
+    
+    <section id="footer">
+      <div class="container-fluid">
+          <div class="row text-xs-center text-sm-left">
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                  <h5>NAVIGATION</h5>
+                  <ul class="list-unstyled quick-links">
+                      <li><a href="{{ url_for('home.homepage') }}"><i class="fa fa-angle-right"></i> Home</a></li>
+                      <li><a href="{{ url_for('home.homepage') }}"><i class="fa fa-angle-right"></i> Ties</a></li>
+                      <li><a href="{{ url_for('home.homepage') }}"><i class="fa fa-angle-right"></i> Accessories</a></li>
+                  </ul>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                  <h5>SOCIAL</h5>
+                  <ul class="list-unstyled quick-links">
+                      <li><a href="http://www.chaze.net"><i class="fas fa-poo-storm"></i> Blog</a></li>
+                      <li><a href="http://www.artem-yerep.com"><i class="fas fa-globe-americas"></i> Portfolio Page</a></li>
+                      <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i> Facebook</a></li>
+                      <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i> Instagram</a></li>
+                  </ul>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                  <h5>WHO WE ARE</h5>
+                  <ul class="list-unstyled quick-links">
+                      <li><a href="{{ url_for('home.about') }}"><i class="fa fa-angle-right"></i> About</a></li>
+                      <li><a href="{{ url_for('home.contact') }}"><i class="fa fa-angle-right"></i> Contact</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    </section>
+
+</body>
+</html>
+

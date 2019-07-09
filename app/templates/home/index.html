@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock title%}
+
+		{% block poo %}
+<div class="container">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+				  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+				  <div class="carousel-item active">
+						<a href="#">
+							<img src="{{ url_for('static',filename='img/banners/mtl-banner-1.jpg')}}"  class="img-responsive" alt="" style="width:100%;">
+						</a>
+				</div>
+				  <div class="carousel-item">
+						<a href="#" target="_blank">
+						  <img src="{{ url_for('static',filename='img/banners/mtl-banner-2.jpg')}}"  class="img-responsive" alt="" style="width:100%;">
+						</a>
+				  </div>
+				  <div class="carousel-item">
+						<a href="http://www.artem-yerep.com" target="_blank">
+						  <img src="{{ url_for('static',filename='img/banners/mtl-banner-3.png')}}" class="img-responsive" alt="" style="width:100%;">
+						</a>
+				  </div>
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				  <span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				  <span class="sr-only">Next</span>
+				</a>
+		</div>
+</div>
+		{% endblock %}
+
+{% block body %}
+
+<body>
+	<div class="container-fluid">
+	{% if categories %}
+
+	<div class="row d-block">
+		{% for category in categories %}
+	<a href="{{ url_for('home.shop_by_category', category_name=category.category_name) }}">
+		<div class="col l4 s12 m6" >
+			<div class="card-panel hoverable" style="max-height:350px; background-color:#FFFFFF;">
+					<div class="card-image" style="margin-left:auto;margin-right: auto;">
+							<img class="responsive-img" src="{{category.category_image}}"  >
+							<!-- <div class="caption"> -->
+							<span class="card-title">
+								<!-- <strong style="font-size:16px;font-family: 'Roboto', sans-serif;color: #000;"> -->
+									{{ category.category_name }}
+								<!-- </strong> -->
+							</span>
+							<!-- </div> -->
+					
+						</div>
+				</div>
+		</div>
+	</a>
+		{% endfor %}
+	</div>
+
+
+
+	{% endif %}
+	<hr>
+
+	<div class="container-fluid">
+		<h1>WELCOME TO OUR ONLINE WORLD OF TIES, SHIRTS AND MEN’S ACCESSORIES.</h1>
+		<p>Men's Accessories- Let's tell it like it is: you can never have too many men’s accessories. Men’s accessories help
+				you to create your own unique style. The accessories give your outfits an edge, and you need a selection to choose
+				from to allow you to adjust the look of your suit, blazer or shirt as needed. Ties, bow ties, scarves and pocket
+				squares are the perfect men’s accessories when it comes to adding color, texture and pattern. The same blazer or
+				ensemble can quickly change character depending what accessories for men you choose to add. Getting your accessories
+				out the night before gives you the chance to reflect on the next day, prepare, and ponder what tie, tie pin or scarf
+				is most suited to the occasion. In addition, knowing exactly where your men’s accessories and shirts are makes it
+				much easier for you to get going in the morning. Our online range of accessories for men includes both traditional
+				accessories and modern classics with a luxurious and elegant touch, traditional craftsmanship, a great fit and
+				comfort. 
+				Our products are aimed at men brave enough to add modern men’s accessories to styles that can often be somewhat predictable. 
+				My-Tie.Club develops men’s accessories with personality and character for those who do not feel that well-dressed and
+				unique need to be mutually exclusive. We use lightning-fast deliveries, free shipping, and personal service to make
+				sure that we achieve our number one goal: truly satisfied customers. Welcome to our world of shirts, sweaters and
+				men’s accessories.</p>
+		<hr>
+		<h2>MEN’S ACCESSORIES – FOUR CLASSIC My-Tie.Club TIPS</h2>
+		<p>A neat way to match your accessories with your blazer, shirt or suit is to either use different shades of the same
+				color, or different colors of the same tone.
+				Sharper contrasts emphasize what makes the individual garments unique, regardless of whether that is their color,
+				pattern or material.
+				Style your suit or blazer with accessories for men such as a tie, pocket square or scarf in the same material to
+				boost the look.
+				Who said that you can’t pair stripes with checks? Clearly you can – just remember to stay within a matching color
+				scheme.</p>
+		<hr>
+		<h2>BUY MEN’S ACCESSORIES ONLINE</h2>
+		<p>To My-Tie.Club, quality is very much about the relationship you build with the product in question. Stylish men’s
+				accessories of a good quality are products that last a long period time, giving you the chance to build a
+				relationship with your men’s accessories. When you look after your My-Tie.Club accessories and care for them they
+				become an extension of yourself to some extent. Buy your accessories for men online. My-Tie.Club makes it so easy
+				and convenient by providing clear, high-quality product images that reflect colors accurately and provide clear,
+				detailed information about materials and sizes. All to ensure that you can feel confident when shopping for men’s
+				accessories online. We always offer free shipping world wide with fast deliveries and genuine service.</p>
+	</div>
+
+	</div>
+</body>
+
+{% endblock %}
+
+

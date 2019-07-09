@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block title %}{{ title }}{% endblock title%}
+{% block body %}
+{% if product_detail %}
+
+<div class="container-fluid clearfix" style="max-width:90%; margin-left: auto; margin-right: auto;">
+    <div class="float-left" style=" width:50%;">
+                <img  class="responsive-img" src="{{ product_detail.product_image }}">
+    </div>
+
+    <div class="float-right" style="width:48%;">
+        <div>
+                <span class="product-name" style="font-size: 2.5em; font-weight: 600;" >
+                        {{ product_detail.product_name }}
+                </span>
+                <hr>
+                <span class="product-price" style="font-size: 1.5em" >
+                      Price : $ {{ product_detail.product_price }}
+                </span>
+                <hr>
+                <h5 style="font-size: 1.2em">
+                    Stock: <span style="color:forestgreen;">{{ product_detail.product_stock }}</span>
+                </h5>
+                <hr>
+                <article>
+                        <h5 style="font-size: 1.5em">
+                                Description : 
+                         </h5>
+                         <br>
+                        <p style="font-size:1.3em; font-weight: 400;">
+                        <div class="product-description">
+                            {{product_detail.product_description }}
+                        </div>
+                        </p>
+                </article>
+                <hr>
+                <section>
+                    <section>
+                        <form class="form-inline" method="POST">
+                                {{ form.hidden_tag() }}
+                                
+                            Choose size : <br>
+                            {% for subfield in form.sizes %}
+                            <div class="radio">
+                                <style>
+                                    label
+                                    {
+                                        margin-right: 0.8em;
+                                        /* margin-right: 5px; */
+                                        font-size: 14px;
+                                        color:inherit;
+                                    }
+                                </style>
+                                    {{ subfield }} 
+                                    {{ subfield.label }}  
+                            </div>
+                                
+                            {% endfor %}
+                            <hr>
+
+                            <div style="margin-left: 9em;">
+                                {{ form.submit(class="btn btn-primary d-block")}}   
+                                <!-- change button and render form from forms.py -->
+                            </div>
+                        </form>
+                  </section>
+                </section>
+        </div>        
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

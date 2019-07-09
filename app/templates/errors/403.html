@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title%} MY-TIE > Forbidden {%endblock title%}
+{% block body%}
+<div class="container">
+    <h1 class="text-right">403 Error<hr></h1>
+<div class="row">
+    <div class="col col-sm-4 col-md-4">        
+        <img src="{{url_for('static',filename='img/my-tie-logo.png')}}" class="img-responsive align-self-end mr-3" style="max-width: 20em; align-self:left;">
+    </div>
+    <div class="col-9 col-sm-8 col-md-8 mt-5">
+        <h3 style="font-weight:600; text-align: right"> Sorry!<br>You do not have sufficient permissions to access this page</h3>
+    </div>
+</div>
+<div style="clear: both;"></div>
+    <hr class="intro-divider">
+    <a href="{{url_for('home.homepage')}}" class="btn btn-outline-info">Home</a>
+
+</div>
+{%endblock body%}
