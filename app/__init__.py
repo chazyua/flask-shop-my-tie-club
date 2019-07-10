@@ -10,6 +10,7 @@ from flask_mail import Mail
 app = Flask(__name__)
 app.config.from_object(Config)
 
+# app.config['ALLOWED_HOSTS'] = 'mytieclub.herokuapp.com'
 
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
@@ -56,3 +57,4 @@ app.config['MAIL_USE_TLS'] = True
 #MAIL_USE_SSL = False
 app.config['MAIL_USERNAME'] = 'mytieclub@gmail.com'
 app.config['MAIL_PASSWORD'] = '!SomeArbitraryPassword123'
+

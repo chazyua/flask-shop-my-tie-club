@@ -1,15 +1,2 @@
-My-Tie.club => Flask E-Commerce Shop
-* In Progress
+My-Tie.club => Flask E-Commerce APP 
 
-Used:
-SQLAlchemy
-Flask-Login
-Flask-Uploads
-Flask-Mail
-Blueprints
-Bootstrap
-PipEnv
-
-
-
-* Rethinked & Rewroted https://github.com/chazyua/my-tie-club

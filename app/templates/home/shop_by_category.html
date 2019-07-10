@@ -42,10 +42,10 @@
         {% for product_list in product.items %}
 	<a href="{{ url_for('home.product_details', product_name = product_list.product_name ) }}">
         <div class="col l4 s12 m6">
-			<div class="card-panel hoverable" style="max-height:360px; background-color:#FFFFFF;">    
+			<div class="card-panel hoverable" style="max-height:500px; background-color:#FFFFFF;">    
                 <div class="card-image" style="margin-left:auto;margin-right: auto;">
-                        <div class="thumbnail" style="height:220px;margin-bottom: 0px;">
-                            <img class="responsive-img" src="{{ product_list.product_image }}" style="height:100%;">
+                        <div class="thumbnail" >
+                            <img class="responsive-img" src="{{ product_list.product_image }}" >
                         </div>
                         <h6 class="title">
                             <span class="product-name">
