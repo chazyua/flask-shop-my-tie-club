@@ -14,7 +14,6 @@ app.config.from_object(Config)
 
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
-
 db = SQLAlchemy(app)
 
 #db.create_all
