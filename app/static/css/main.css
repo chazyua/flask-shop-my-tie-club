@@ -83,9 +83,41 @@ a.nav-link{
 
 .product-name
 {
+  font-size: 2.5em; 
+  font-weight: 600;
   text-transform: capitalize;
-  font-weight: 400;
 }
+
+.float-left {
+  width: 50%; 
+}
+
+.float-right {
+  width: 48%;
+}
+
+@media screen and (max-width: 900px) {
+
+    .product-name
+    {
+      font-size: 1.5em;
+      text-transform: capitalize;
+      font-weight: 400;
+    }  
+
+    .float-left {
+      width: 100%; 
+    }
+    
+    .float-right {
+      width: 100%;
+    }
+
+    .index-text {
+      font-size: 1.5em;
+    }
+}
+
 
 .product-description
 {
@@ -93,6 +125,8 @@ a.nav-link{
   min-width: auto;
   height: auto;
 }
+
+
 .push
 {
   height:4em;
@@ -1254,7 +1288,8 @@ p,h1, h3, input, ul, h6 ,h5{
     }
     .nomargin
     {
-        margin-left: 1.6em;
+      font-size: 0.8em;
+      margin-left: 4em;
     }
     .form-inline p>span{display: none;}
     .hide{
@@ -1392,14 +1427,14 @@ p,h1, h3, input, ul, h6 ,h5{
 	padding-bottom: 5px;
 }
 
-/* .item-img{
-    width:5em;
-    height: 4em;
+.item-img{
+  width:7em;
+
 	display:inline;
 	padding-right:1em;
 	margin-top: 2px;
 	margin-bottom: 4px;
-} */
+}
 
 .item-name {
 	top: 7%;
@@ -1425,13 +1460,12 @@ p,h1, h3, input, ul, h6 ,h5{
 span.size
 {
   color:green;
-  line-height: 2;
-  font-size: .90em;
+  font-size: .7em;
 }
 
 .nomargin
 {
-    font-size: 1.03em;
+    font-size: .7em;
     text-transform: capitalize;
 }
 .nomargin > p{

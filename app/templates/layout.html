@@ -5,6 +5,8 @@
                 {%block title%}
                 {%endblock title%}
         </title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
         <!-- CSS + BOOTSTRAP + JS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
         <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
@@ -123,8 +125,7 @@
                   <h5>NAVIGATION</h5>
                   <ul class="list-unstyled quick-links">
                       <li><a href="{{ url_for('home.homepage') }}"><i class="fa fa-angle-right"></i> Home</a></li>
-                      <li><a href="{{ url_for('home.homepage') }}"><i class="fa fa-angle-right"></i> Ties</a></li>
-                      <li><a href="{{ url_for('home.homepage') }}"><i class="fa fa-angle-right"></i> Accessories</a></li>
+                      <li><a href="{{ url_for('users.cart') }}"><i class="fa fa-angle-right"></i> Cart</a></li>
                   </ul>
               </div>
               <div class="col-xs-12 col-sm-4 col-md-4">
