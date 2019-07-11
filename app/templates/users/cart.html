@@ -1,8 +1,6 @@
 {% extends "layout.html" %}
 {%block title%} Cart {%endblock title%}
 {% block body%}
-<!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
-<!-- <link href="{{ url_for('static', filename='css/cart.css')}}" rel="stylesheet"> -->
 <div class="container">
 
 {% if current_user.is_authenticated %}
@@ -95,10 +93,13 @@
 
 		</div>
 
+		<div class="container-checkout">
 				
 					<a href="{{ url_for('home.homepage') }}" class="btn btn-outline-dark continue-shopping"><i class="fa fa-angle-left"></i> Continue Shopping</a>
 					
 					<a href="#" class="btn btn-success checkout-btn float-right" data-toggle="modal" data-target="#exampleModalCenter">Checkout</a>
+
+		</div>
 										<!-- Modal -->
 						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered" role="document">

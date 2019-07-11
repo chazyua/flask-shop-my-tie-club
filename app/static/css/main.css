@@ -1087,8 +1087,9 @@ img.responsive-img, video.responsive-video {
   position: absolute;
   bottom: 0;
   width: 100%;
-  opacity: .4;
-  background-color: rgb(0, 0, 0);
+  opacity: .5;
+  background-color: rgb(138, 138, 138);
+  line-height: 1.2em;
 }
 
 #footer h5{
@@ -1215,13 +1216,15 @@ p,h1, h3, input, ul, h6 ,h5{
         margin-left: -24px; 
     }
     .col-1{
-        margin-left: -14px; 
+        margin-left: 14px; 
+        padding-left: 0px;
     }
     .col-6{
         margin-left: 14px; 
     }
     .nomargin > p{
     word-wrap: break-word; 
+    
     }
     .actions
     {
@@ -1245,6 +1248,7 @@ p,h1, h3, input, ul, h6 ,h5{
     }
 }
 
+
 @media screen and (max-width: 1020px) { 
     /* Large Desktop */ 
     .row{
@@ -1252,6 +1256,7 @@ p,h1, h3, input, ul, h6 ,h5{
     }
     .col-1{
         margin-left: -14px; 
+        padding-left: 0;
     }
     .col-6{
         margin-left: 14px; 
