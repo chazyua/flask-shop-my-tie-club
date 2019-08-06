@@ -1195,7 +1195,7 @@ p,h1, h3, input, ul, h6 ,h5{
         /* display:table; */
         margin-left: 10px;
         max-width: 100%;
-        width: 60%;
+        /* width: 100%; */
         margin-bottom: 2em;
 
     }
