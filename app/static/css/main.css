@@ -11,7 +11,7 @@ html {
 body {
   font-family: 'Montserrat', sans-serif;
   margin-bottom: 12em ;
-  margin-top: 3em;
+  margin-top: 4em;
 }
 
 #logo {
@@ -20,6 +20,7 @@ body {
 
 .navbar {
 padding-bottom: 0px;
+max-width: 100%;
 }
 
 .navbar-brand {
@@ -1142,7 +1143,7 @@ font-weight:400;
 
   #footer {
     position: absolute;
-    /* bottom: 0; */
+    bottom: 0;
     width: 100%;
     opacity: .4;
     background-color: rgb(0, 0, 0);
@@ -1151,7 +1152,7 @@ font-weight:400;
 
   body {
     margin-bottom: 25em ;
-    margin-top: 4em;
+    margin-top: 5em;
   }
 
 
@@ -1190,10 +1191,10 @@ p,h1, h3, input, ul, h6 ,h5{
         margin-top: -50px;
     }
 
-.table-crt {
+#cart {
         /* display:table; */
-        margin-left: 20px;
-
+        margin-left: 10px;
+        max-width: 100%;
         width: 60%;
         margin-bottom: 2em;
 
@@ -1233,7 +1234,7 @@ p,h1, h3, input, ul, h6 ,h5{
         margin-top: -50px;
         
     }
-    .table-crt
+    #cart
     {
         display:table;
         margin-left: auto;
@@ -1241,11 +1242,7 @@ p,h1, h3, input, ul, h6 ,h5{
         width: 60%;
         padding: 8px;
     }
-    .table-crt > strong
-    {
-        padding: 8px;
-        font-size: 18.59px
-    }
+  
 }
 
 
@@ -1271,10 +1268,11 @@ p,h1, h3, input, ul, h6 ,h5{
         margin-top: -50px;
         
     }
-    .table-crt
+    #cart
     {
         display:table;
-        margin-left: auto;
+        margin-top: 6em;
+        margin-left: 20px;
         margin-right: 20px;
         width: 70%;
         padding: 8px;
@@ -1305,15 +1303,19 @@ p,h1, h3, input, ul, h6 ,h5{
     left: 77%;
     margin-top:-60px;
     }
-    .table-crt
+    #cart
     {
-        display:table;
-        margin-left: auto;
+        display:grid;
+        margin-left: 20px;
         margin-right: 20px;
-        width: 70%;
+        width: 60%;
         padding: 8px;
         margin-bottom:8px; 
     }
+    #footer{
+      /* width: 120%; */
+    }
+
     
  }
 
@@ -1329,13 +1331,12 @@ p,h1, h3, input, ul, h6 ,h5{
     .continue-shopping{
         display: none;
     } 
-    .table-crt
-{
+    #cart {
     display: grid;
-    justify-content: flex-end !important;
+    /* justify-content: flex-end !important; */
         margin-left: auto;
         margin-right:0;
-        width: auto;
+        width: 100%;
         padding: 3px;
         margin-bottom:2px;
 }
@@ -1686,4 +1687,11 @@ a.remove:hover {
 .loading
 {
     background: #fff url('../cart-loader.gif')no-repeat;
+}
+
+@media (min-width: 576px) {
+.navbar-expand-sm {
+    flex-flow: wrap;
+    justify-content: flex-start;
+}
 }

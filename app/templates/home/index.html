@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Home{% endblock title%}
+{% block title %}My-Tie.Club > Home{% endblock title%}
 
 		{% block poo %}
 <div class="container">
@@ -50,17 +50,12 @@
 		<div class="col l4 s12 m6" >
 			<div class="card-panel hoverable" style="max-height:350px; background-color:#FFFFFF;">
 					<div class="card-image" style="margin-left:auto;margin-right: auto;">
-							<img class="responsive-img" src="{{category.category_image}}"  >
-							<!-- <div class="caption"> -->
-							<span class="card-title">
-								<!-- <strong style="font-size:16px;font-family: 'Roboto', sans-serif;color: #000;"> -->
-									{{ category.category_name }}
-								<!-- </strong> -->
-							</span>
-							<!-- </div> -->
-					
-						</div>
-				</div>
+							<img class="responsive-img" src="{{category.category_image}}">
+								<span class="card-title">
+										{{ category.category_name }}
+								</span>
+					</div>
+			</div>
 		</div>
 	</a>
 		{% endfor %}

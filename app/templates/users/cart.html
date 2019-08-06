@@ -1,131 +1,133 @@
 {% extends "layout.html" %}
 {%block title%} Cart {%endblock title%}
 {% block body%}
-<div class="container">
 
-{% if current_user.is_authenticated %}
-	<div class="container">
-		<div class="row hide">
-				<div class="col-1">					
-				</div>	
-				<div class="col-6 col-md-3">
-					<strong>Product</strong>
-				</div>
-				<div class="col-3 col-md-2">
-						<strong>Size</strong>
-				</div>
-				<div class="col-auto left">
-						<strong>Subtotal</strong>
-				</div>
+	{% if current_user.is_authenticated %}
 
-				<div class="col-auto col-md-3">
-						<strong>Quantity</strong>
-				</div>
-
-				<div class="col-3 col-md-2">
-						<strong></strong>
-				</div>
-		</div>
-		{% for items in cartlist %}
-
-		<div class="row">
-			<div class="col-1">
-				<img src="{{ items.product.product_image }}" class="item-img img-responsive"/>
-			</div>	
-			<div class="col-6 col-md-3">	
-				<h6 class="nomargin">
-					<p>{{ items.product.product_name }}</p>
-				</h6>
-			</div>
-			<div class="col-3 col-md-2">
-				<span class="size">Size:</span> 
-				<span class="size">{{ items.product.product_size }}</span>
-			</div>
-			<div class="col-auto left">
-				<p> 
-					<span class="iso">$</span>
-					<span class="item-total{{items.id}} item-total">{{items.subtotal}}</span>
-				</p>
-			</div>
-			<div class="col-auto col-md-4">
-					<form action="{{url_for('users.quantity_update', id=items.id)}}" class="form-inline"
-					style="padding:0;margin:0;">
+	<table id="cart" class="table table-hover table-condensed">
+			<thead>
+				<tr>
+					<th style="width:10%">Photo</th>
+					<th style="width:60%">Product</th>
+					<th style="width:10%">Size</th>
+					<th style="width:10%">Price</th>
+					<th style="width:5%">Qty</th>
+					<th style="width:5%">Delete</th>
+	
+				</tr>
+			</thead>
+			{% for items in cartlist %}
+			<tbody>
+				<tr>
+					<td data-th="Photo">
+						<img src="{{ items.product.product_image }}" class="item-img img-responsive" />
+					</td>
+					<td data-th="Product">
+						<h6 class="nomargin ml-0">
+								<p>{{ items.product.product_name }}</p>
+						</h6>          
+					</td>
+					<td data-th="Size">
+						<span class="size">{{ items.product.product_size }}</span>
+					</td>
+					<td data-th="Price">
 						<p>
-							<input id="minus-btn" type="button" class="minus-btn{{items.id}} btn btn-sm btn-outline-info" value="-">
-
-								<input type="text" name="quantity" class="qty form-control-sm"
-								id="qty{{items.id}}" value="{{items.quantity}}" readonly>
-
-
-							<input id="plus-btn" type="button" class="plus-btn{{items.id}} 	btn btn-sm btn-outline-info" value="+">
-
-							 <span class="times">x</span> <span class="iso">$</span> <span class="item-price{{items.id}}"> {{ items.product.product_price }}</span>
+							<span class="iso">$</span>
+							<span class="item-total{{items.id}} item-total">{{items.subtotal}}</span>
 						</p>
-					</form>
-			</div>
-			<div class="col-3 col-md-2 actions">
-					<a href="{{ url_for('users.remove_item', id=items.id) }}"
-					class=" btn btn-outline-danger btn-sm">x</a>
-					<div id="loading{{items.id}}" class="spinner-border spinner-border-sm text-success temp_hidden" role="status">
+					</td>
+					<td data-th="Qty">
+							<!-- <form action="{{url_for('users.quantity_update', id=items.id)}}" class="form-inline" style="padding:0;margin:0;">
+								<p>
+									<input id="minus-btn" type="button" class="minus-btn{{items.id}} btn btn-sm btn-outline-info" value="-">
+									<input type="text" name="quantity" class="qty form-control-sm" id="qty{{items.id}}" value="{{items.quantity}}"
+										readonly>
+									<input id="plus-btn" type="button" class="plus-btn{{items.id}} 	btn btn-sm btn-outline-info" value="+">
+									<span class="times">x</span> <span class="iso">$</span> <span class="item-price{{items.id}}">
+										{{ items.product.product_price }}</span>
+								</p>
+							</form> -->
+							<span>{{items.quantity}}</span>
+					</td>
+		
+					<td class="actions" data-th="Delete">
+						<a href="{{ url_for('users.remove_item', id=items.id) }}" class=" btn btn-outline-danger btn-sm">x</a>
+						<div id="loading{{items.id}}" class="spinner-border spinner-border-sm text-success temp_hidden"
+							role="status">
 							<span class="sr-only">Loading...</span>
-						  </div>
-						  <div id="loading_{{items.id}}" class="spinner-grow spinner-grow-sm text-success temp_hidden" role="status">
+						</div>
+						<div id="loading_{{items.id}}" class="spinner-grow spinner-grow-sm text-success temp_hidden"
+							role="status">
 							<span class="sr-only">Loading...</span>
-					</div>
-			</div>
-			
-		</div>
-		<div class="line"></div>
-		{% endfor %}
-		<div class="table-crt">
-			<div class="totals">
-					<strong>Subtotal: $</strong>
-					<span id="subtotal_value">{{items_subtotals}}</span>
-					<br>
-					<strong>Shipping: $</strong>
-					{{ price }}
-					<br>
-					<strong>Total: $</strong>
-					<strong><span id ="total-final">{{items_subtotals + price}}</span></strong>
-					<br>
-			</div>
-				
+						</div>
+					</td>
+				</tr>
+			</tbody>
+			{% endfor %}
+		
+			<tfoot>
+				<tr class="visible-xs">
+					<th colspan="1"><strong></strong></th>
+					<th><strong>Subtotal:</strong></th>
+					<td class="text-right">$ {{items_subtotals}}</td>
+				</tr>
+				<tr class="visible-xs">
+					<th colspan="1"><strong></strong></th>
+					<th><strong>Shipping</strong></th>
+					<td class="text-right">$ {{ price }}</td>
+				</tr>
+				<tr class="visible-xs">
+					<th colspan="1"><strong></strong></th>
+					<th><strong>Total</strong></th>
+					<td class="text-right"><strong>$ {{items_subtotals + price}}</strong></td>
+				</tr>
+				<tr>
+					<td><a href="{{ url_for('home.homepage') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+					<td><a href="#" class="btn btn-success" data-toggle="modal"
+						data-target="#exampleModalCenter"> Checkout <i class="fa fa-angle-right"></i></a></td>
+				</tr>
+			</tfoot>
+		</table>
 
-		</div>
 
-		<div class="container-checkout">
-				
-					<a href="{{ url_for('home.homepage') }}" class="btn btn-outline-dark continue-shopping"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-					
-					<a href="#" class="btn btn-success checkout-btn float-right" data-toggle="modal" data-target="#exampleModalCenter">Checkout</a>
 
-		</div>
-										<!-- Modal -->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-								<div class="modal-dialog modal-dialog-centered" role="document">
-									<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalCenterTitle">Select Payment Method</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-											<div class="row">
-													<div class="col-md-4">
-															<!-- FORM METHOD POST PAYMENT SCRIPT -->
-													</div>
-													<div class="col-md-4">other payment method</div>
-												</div>
-											
-									</div>
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalCenterTitle">Select Payment Method</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-md-4">
+											<!-- FORM METHOD POST PAYMENT SCRIPT -->
+										</div>
+										<form action="/charge" method="post">
+											<article>
+												<label>
+													<span>Amount is ${{items_subtotals + price}}</span>
+												</label>
+											</article>
 									
+											<script src="https://checkout.stripe.com/checkout.js" 
+											class="stripe-button" data-key="{{ key }}"
+												data-description="A Stripe Charge" 
+												data-amount="{{(items_subtotals + price ) * 100}}" 
+												data-locale="auto"></script>
+										</form>
 									</div>
+
 								</div>
-								</div>
-</div>
+
+						</div>
+					</div>
+				</div>
 	</div>
-</div>
 {% for items in cartlist %}
 
 <!-- PAYMENT SCRIPT -->
@@ -133,56 +135,57 @@
 	{% endfor %}
 
 {% else %}
-	<table id="cart" class="table table-hover table-condensed">
-    				<thead>
-						<tr>
-							<th style="width:55%">Product</th>
-							<th style="width:15%">Price</th>
-							<th style="width:20%">Quantity</th>
-							<th style="width:10%"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td data-th="Product">
-								<div class="row">
-
-								</div>
-							</td>
-							<td data-th="Price"><p> 
-							</td>
-							
-							<td data-th="Quantity">
-							</td>
-
-							<td class="actions" data-th="">			
-							</td>
-						</tr>
-					</tbody>
-
-					<tfoot>
-						<tr class="visible-xs">
-								<th colspan="1"><strong></strong></th>
-							<th ><strong>Subtotal</strong></th>
-							<td class="text-right">0</td>
-						</tr>
-						<tr class="visible-xs">
-								<th colspan="1"><strong></strong></th>
-							<th ><strong>Shipping</strong></th>
-							<td class="text-right">0</td>
-						</tr>
-						<tr class="visible-xs">
-								<th colspan="1"><strong></strong></th>
-							<th ><strong>Total</strong></th>
-							<td class="text-right"><strong>0</strong></td>
-						</tr>
-						<tr>
-							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-							<!-- <td colspan="2" class="hidden-xs"></td> -->
-							<td><a href="#" class="btn btn-success">Checkout <i class="fa fa-angle-right"></i></a></td>								
-						</tr>
-					</tfoot>
-				</table>
+		<table id="cart" class="table table-hover table-condensed">
+			<thead>
+				<tr>
+					<th style="width:10%"></th>
+					<th style="width:55%">Product</th>
+					<th style="width:15%">Price</th>
+					<th style="width:5%">Quantity</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td data-th="Product">
+						<div class="row">
+		
+						</div>
+					</td>
+					<td data-th="Price">
+						<p>
+					</td>
+		
+					<td data-th="Quantity">
+					</td>
+		
+					<td class="actions" data-th="">
+					</td>
+				</tr>
+			</tbody>
+		
+			<tfoot>
+				<tr class="visible-xs">
+					<th colspan="1"><strong></strong></th>
+					<th><strong>Subtotal</strong></th>
+					<td class="text-right">0</td>
+				</tr>
+				<tr class="visible-xs">
+					<th colspan="1"><strong></strong></th>
+					<th><strong>Shipping</strong></th>
+					<td class="text-right">0</td>
+				</tr>
+				<tr class="visible-xs">
+					<th colspan="1"><strong></strong></th>
+					<th><strong>Total</strong></th>
+					<td class="text-right"><strong>0</strong></td>
+				</tr>
+				<tr>
+					<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+					<td><a href="#" class="btn btn-success">Checkout <i class="fa fa-angle-right"></i></a></td>
+				</tr>
+			</tfoot>
+		</table>
 {% endif %}
 
 

@@ -72,8 +72,7 @@ def product_details(product_name):
 		db.session.commit()
 
 		flash("{} has been added to cart".format(product_detail.product_name))	
-		return redirect(url_for('home.product_details',\
-			product_name = product_detail.product_name ))
+		return redirect(url_for('home.product_details', product_name = product_detail.product_name ))
 	return render_template("home/productdetails.html",
 		product_detail = product_detail,title = product_detail.product_name,
 		form =form,count=count)

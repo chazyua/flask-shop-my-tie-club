@@ -1,4 +1,4 @@
-from flask import Flask, render_template,abort
+from flask import Flask, render_template, abort
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -49,11 +49,5 @@ def page_not_found(error):
 def internal_server_error(error):
     return render_template('errors/500.html', title = 'Forbidden'),500
 
-#get back to it 
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-#MAIL_USE_SSL = False
-app.config['MAIL_USERNAME'] = 'mytieclub@gmail.com'
-app.config['MAIL_PASSWORD'] = '!SomeArbitraryPassword123'
+
 

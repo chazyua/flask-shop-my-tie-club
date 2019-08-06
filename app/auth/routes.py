@@ -38,7 +38,7 @@ def register():
 			return redirect(url_for('auth.login'))
 		return render_template('register.html', form = form, error= error, title = 'Register')
 	except Exception as e:
-		return render_template('register.html', form = form, title = "Register") ##??
+		return render_template('register.html', form = form, title = "Register")
 
 
 @auth.route('/login/', methods=["GET", "POST"])
