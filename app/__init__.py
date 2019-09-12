@@ -10,13 +10,11 @@ from flask_mail import Mail
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# app.config['ALLOWED_HOSTS'] = 'mytieclub.herokuapp.com'
-
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 db = SQLAlchemy(app)
 
-#db.create_all
+# db.create_all()
 migrate = Migrate(app, db)
 
 login_manager = LoginManager(app)

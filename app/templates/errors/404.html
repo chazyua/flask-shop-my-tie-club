@@ -2,10 +2,13 @@
 {% block title %}My-Tie.Club > Page Not Found {% endblock title %}
 {% block body %}
 <div class="container">
-    <h1 class="text-center"> 404 Error</h1>
-    <h3 class="text-center"> The page you're looking for doesn't exists</h3>
+    <h1 class="text-center"> <b>404 Error</b> </h1>
+    <h3 class="text-center"> The page you're looking for doesn't exists...</h3>
     <hr class="intro-divider">
+    
+    <!-- <hr class="intro-divider"> -->
     <a href="{{url_for('home.homepage')}}" class="btn btn-outline-info">Home</a>
+    <h7 class="text-right text-muted"> or somewhere <a href="http://www.artem-yerep.com" target="_blank">nice <img id="ay-logo" src="{{url_for('static', filename='img/ay-2.png')}}" alt="Profile"></a></h7>
 
 </div>
 {% endblock %}

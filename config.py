@@ -1,13 +1,16 @@
 import os
+from dotenv import load_dotenv
+
 
 # grab the folder of the top-level directory of this project
 basedir = os.path.abspath(os.path.dirname(__file__))
 TOP_LEVEL_DIR = os.path.abspath(os.curdir)
 
-class Config(object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'nifdl>jfdf@md!'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')or 'sqlite:///shop.db'
+class Config:
+    SECRET_KEY = os.getenv('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL') or os.getenv('SQLALCHEMY_DATABASE_URI')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
     # Uploads
     UPLOADS_DEFAULT_DEST = TOP_LEVEL_DIR + '/app/static/img/products'
     UPLOADS_DEFAULT_URL = 'http://localhost:5000/static/img/products'
